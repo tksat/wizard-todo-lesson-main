@@ -6,7 +6,6 @@ import "./TodoList.css"
 /*
 ・入力中のテキストを格納する
 ・todoリスト情報を格納する
-
 */
 
 const TodoList = () => {
@@ -23,12 +22,24 @@ const TodoList = () => {
     return e.preventDefault()
   }
 
+  //削除機能
+  const checked = (id) => {
+    const filteredList = todosList.map(list => list.id === id ? { ...list, checked: !list.checked } : list)
+    setTodosList(filteredList)
+  }
+  const removeItem = () => {
+    const filteredList = todosList.filter(todo => !todo.checked)
+    setTodosList(filteredList)
+  }
+
   return (
     <div className="container">
       <h1 className="title">Example Todo</h1>
       <ul className="tools">
         <li className="tool">
-          <FontAwesomeIcon className="delete-all-icon" icon={faTrashAlt} />
+          <div onClick={removeItem}>
+            <FontAwesomeIcon className="delete-all-icon" icon={faTrashAlt} />
+          </div>
         </li>
       </ul>
       <div className="todo-list">
@@ -43,6 +54,7 @@ const TodoList = () => {
                 <input
                   className="todo-checkbox"
                   type="checkbox"
+                  onChange={() => checked(item.id)}
                 />
                 <label className="todo-text">
                   {item.text}
