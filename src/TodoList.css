@@ -97,6 +97,10 @@ ul {
   position: relative;
 }
 
+.onCheck{
+  text-decoration-line: line-through;
+}
+
 .todo-text-active {
   text-decoration: line-through;
 }

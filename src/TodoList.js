@@ -56,7 +56,7 @@ const TodoList = () => {
                   type="checkbox"
                   onChange={() => checked(item.id)}
                 />
-                <label className="todo-text">
+                <label className={"todo-text" + " " + (item.checked ? "onCheck" : " ")}>
                   {item.text}
                 </label>
               </li>
