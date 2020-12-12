@@ -1,11 +1,12 @@
 import React, { useState } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faTrashAlt } from "@fortawesome/free-solid-svg-icons"
 import "./TodoList.css"
+import Trash from "./component/Trash"
 
 /*
-・入力中のテキストを格納する
-・todoリスト情報を格納する
+コンポーネントの切り分けを行う
+・ゴミ箱ボタン（表示アイコンを渡して表示させる）
+・todo入力
+・todo一覧
 */
 
 const TodoList = () => {
@@ -36,10 +37,8 @@ const TodoList = () => {
     <div className="container">
       <h1 className="title">Example Todo</h1>
       <ul className="tools">
-        <li className="tool">
-          <div onClick={removeItem}>
-            <FontAwesomeIcon className="delete-all-icon" icon={faTrashAlt} />
-          </div>
+        <li className="tool" >
+          <Trash onClick={removeItem} />
         </li>
       </ul>
       <div className="todo-list">
