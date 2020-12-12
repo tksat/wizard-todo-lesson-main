@@ -10,13 +10,13 @@ import "./TodoList.css"
 
 const TodoList = () => {
   const [todoText, setTodoText] = useState("")
-  const [todosList, setTodosList] = useState([])
-  const [todosListId, setTodosListId] = useState(0)
+  const [todos, setTodos] = useState([])
+  const [todoId, setTodoId] = useState(0)
 
   const handleChange = (e) => setTodoText(e.target.value)
   const handleClick = (e) => {
-    setTodosListId(todosListId + 1)
-    setTodosList([...todosList, { id: todosListId, text: todoText }])
+    setTodoId(todoId + 1)
+    setTodos([...todos, { id: todoId, text: todoText }])
 
     setTodoText("")
     return e.preventDefault()
@@ -24,12 +24,12 @@ const TodoList = () => {
 
   //削除機能
   const checked = (id) => {
-    const filteredList = todosList.map(list => list.id === id ? { ...list, checked: !list.checked } : list)
-    setTodosList(filteredList)
+    const filteredList = todos.map(todo => todo.id === id ? { ...todo, checked: !todo.checked } : todo)
+    setTodos(filteredList)
   }
   const removeItem = () => {
-    const filteredList = todosList.filter(todo => !todo.checked)
-    setTodosList(filteredList)
+    const filteredList = todos.filter(todo => !todo.checked)
+    setTodos(filteredList)
   }
 
   return (
@@ -48,7 +48,7 @@ const TodoList = () => {
           <input className="todos-header-plus" type="submit" value="＋" onClick={(e) => handleClick(e)} />
         </form>
         <ul className="todos">
-          {todosList.map(item => {
+          {todos.map(item => {
             return (
               <li className="todo" key={item.id}>
                 <input
