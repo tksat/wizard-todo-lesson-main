@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import "./TodoList.css"
 import Trash from "./component/Trash"
 import InputText from "./component/InputText"
+import Todo from "./component/Todo"
 
 /*
 コンポーネントの切り分けを行う
@@ -48,14 +49,11 @@ const TodoList = () => {
           {todos.map(item => {
             return (
               <li className="todo" key={item.id}>
-                <input
-                  className="todo-checkbox"
-                  type="checkbox"
+                <Todo
                   onChange={() => checked(item.id)}
+                  text={item.text}
+                  checked={item.checked}
                 />
-                <label className={"todo-text" + " " + (item.checked ? "onCheck" : " ")}>
-                  {item.text}
-                </label>
               </li>
             )
           })}
