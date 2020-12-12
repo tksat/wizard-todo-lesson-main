@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import "./TodoList.css"
 import Trash from "./component/Trash"
+import InputText from "./component/InputText"
 
 /*
 コンポーネントの切り分けを行う
@@ -42,10 +43,7 @@ const TodoList = () => {
         </li>
       </ul>
       <div className="todo-list">
-        <form className="todos-header">
-          <input className="todos-header-input" type="text" value={todoText} onChange={(e) => handleChange(e)} />
-          <input className="todos-header-plus" type="submit" value="＋" onClick={(e) => handleClick(e)} />
-        </form>
+        <InputText type="text" value={todoText} onChange={(e) => handleChange(e)} onClick={handleClick} />
         <ul className="todos">
           {todos.map(item => {
             return (
